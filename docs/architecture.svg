@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Windows Developer Tools on Amazon EKS - end-to-end architecture</title>
+  <desc id="desc">Build a custom Windows developer image, push it to Amazon ECR, deploy it to a Windows EKS worker, access it with kubectl exec, and validate installed tools.</desc>
+  <defs>
+    <linearGradient id="navy" x1="0" x2="1"><stop offset="0" stop-color="#0756A5"/><stop offset="1" stop-color="#082D58"/></linearGradient>
+    <linearGradient id="blue" x1="0" x2="1"><stop offset="0" stop-color="#EAF4FF"/><stop offset="1" stop-color="#D9EBFF"/></linearGradient>
+    <linearGradient id="green" x1="0" x2="1"><stop offset="0" stop-color="#EAF9EF"/><stop offset="1" stop-color="#D5F5DF"/></linearGradient>
+    <linearGradient id="purple" x1="0" x2="1"><stop offset="0" stop-color="#F4ECFF"/><stop offset="1" stop-color="#E9DCFF"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#245B91"/></marker>
+    <style>
+      .h1{font:700 34px 'Segoe UI',Arial,sans-serif;fill:#fff}
+      .h2{font:700 23px 'Segoe UI',Arial,sans-serif;fill:#132B43}
+      .h3{font:700 18px 'Segoe UI',Arial,sans-serif;fill:#183B5B}
+      .body{font:16px 'Segoe UI',Arial,sans-serif;fill:#243B53}
+      .small{font:14px 'Segoe UI',Arial,sans-serif;fill:#52677C}
+      .mono{font:15px Consolas,'Courier New',monospace;fill:#E9F2FA}
+      .step{font:700 19px 'Segoe UI',Arial,sans-serif;fill:#183B5B}
+      .line{stroke:#245B91;stroke-width:4;fill:none;marker-end:url(#arrow)}
+      .card{stroke:#B9D2EA;stroke-width:2;rx:18}
+    </style>
+  </defs>
+  <rect width="1800" height="1120" fill="#F7FAFE"/>
+  <rect x="0" y="0" width="1800" height="82" rx="0" fill="url(#navy)"/>
+  <text x="900" y="53" text-anchor="middle" class="h1">Windows Developer Tools on AWS EKS</text>
+  <text x="900" y="108" text-anchor="middle" class="small">End-to-end build, publish, deploy, access and validation workflow</text>
+
+  <!-- Top workflow -->
+  <g>
+    <rect x="40" y="132" width="265" height="142" rx="18" fill="url(#purple)" stroke="#C9B4F1" stroke-width="2"/>
+    <circle cx="70" cy="164" r="19" fill="#673AB7"/><text x="70" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">1</text>
+    <text x="101" y="171" class="step">Prepare workspace</text>
+    <text x="64" y="210" class="body">Dockerfile</text><text x="64" y="236" class="body">install-tools.ps1</text><text x="64" y="260" class="body">install-cli-tools.ps1</text>
+
+    <rect x="337" y="132" width="265" height="142" rx="18" fill="url(#blue)" stroke="#A8CDEC" stroke-width="2"/>
+    <circle cx="367" cy="164" r="19" fill="#1769AA"/><text x="367" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">2</text>
+    <text x="398" y="171" class="step">Build image</text>
+    <text x="365" y="218" class="body">docker build</text>
+    <text x="365" y="245" class="body">windows-devtools:v6</text>
+
+    <rect x="634" y="132" width="265" height="142" rx="18" fill="#FFF3E5" stroke="#F2C58E" stroke-width="2"/>
+    <circle cx="664" cy="164" r="19" fill="#D97706"/><text x="664" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">3</text>
+    <text x="695" y="171" class="step">Push to Amazon ECR</text>
+    <text x="662" y="218" class="body">Tag image with ECR URI</text><text x="662" y="245" class="body">docker push</text>
+
+    <rect x="931" y="132" width="265" height="142" rx="18" fill="url(#blue)" stroke="#A8CDEC" stroke-width="2"/>
+    <circle cx="961" cy="164" r="19" fill="#1769AA"/><text x="961" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">4</text>
+    <text x="992" y="171" class="step">Deploy on EKS</text>
+    <text x="959" y="218" class="body">kubectl apply -f</text><text x="959" y="245" class="body">Windows node selector</text>
+
+    <rect x="1228" y="132" width="245" height="142" rx="18" fill="url(#green)" stroke="#A7DDB9" stroke-width="2"/>
+    <circle cx="1258" cy="164" r="19" fill="#16834A"/><text x="1258" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">5</text>
+    <text x="1289" y="171" class="step">Container running</text>
+    <text x="1256" y="218" class="body">Windows pod is</text><text x="1256" y="245" class="body">Running / Ready</text>
+
+    <rect x="1505" y="132" width="255" height="142" rx="18" fill="url(#purple)" stroke="#C9B4F1" stroke-width="2"/>
+    <circle cx="1535" cy="164" r="19" fill="#673AB7"/><text x="1535" y="171" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">6</text>
+    <text x="1566" y="171" class="step">Access &amp; verify</text>
+    <text x="1533" y="218" class="body">kubectl exec -it</text><text x="1533" y="245" class="body">Check installed tools</text>
+    <path d="M305 203 H329" class="line"/><path d="M602 203 H626" class="line"/><path d="M899 203 H923" class="line"/><path d="M1196 203 H1220" class="line"/><path d="M1473 203 H1497" class="line"/>
+  </g>
+
+  <!-- Build host -->
+  <rect x="40" y="322" width="395" height="475" rx="22" fill="#fff" stroke="#8CB3D9" stroke-width="2.5"/>
+  <rect x="40" y="322" width="395" height="66" rx="20" fill="#EAF3FF"/>
+  <text x="68" y="364" class="h2">Windows build / admin host</text>
+  <text x="68" y="427" class="h3">Build context</text>
+  <rect x="65" y="447" width="345" height="185" rx="14" fill="#F7FAFE" stroke="#C8D7E7"/>
+  <text x="88" y="480" class="body" font-weight="700">windows-devtools/</text>
+  <text x="102" y="519" class="body">📄 Dockerfile</text>
+  <text x="102" y="554" class="body">📄 install-tools.ps1</text>
+  <text x="102" y="589" class="body">📄 install-cli-tools.ps1</text>
+  <rect x="65" y="657" width="345" height="105" rx="14" fill="#EEF5FC" stroke="#C8D7E7"/>
+  <text x="88" y="693" class="h3">Build and publish tools</text>
+  <text x="88" y="725" class="body">Docker • AWS CLI • kubectl</text>
+
+  <!-- ECR -->
+  <rect x="475" y="390" width="315" height="300" rx="22" fill="#FFF9F0" stroke="#ECA64B" stroke-width="2.5"/>
+  <rect x="475" y="390" width="315" height="70" rx="20" fill="#FFF0D9"/>
+  <text x="632" y="433" text-anchor="middle" class="h2">Amazon ECR</text>
+  <text x="632" y="493" text-anchor="middle" class="small">Private container registry</text>
+  <rect x="510" y="520" width="245" height="112" rx="16" fill="#fff" stroke="#E6B56E" stroke-width="2"/>
+  <text x="632" y="558" text-anchor="middle" class="h3">windows/demo</text>
+  <text x="632" y="589" text-anchor="middle" class="body">devtools-v6</text>
+  <text x="632" y="615" text-anchor="middle" class="small">Custom Windows image</text>
+  <path d="M435 560 H467" class="line"/>
+  <path d="M790 560 H840" class="line"/>
+
+  <!-- EKS cluster -->
+  <rect x="840" y="322" width="920" height="475" rx="24" fill="#fff" stroke="#9C74E8" stroke-width="3" stroke-dasharray="12 8"/>
+  <rect x="870" y="342" width="860" height="62" rx="16" fill="#F3EDFF"/>
+  <text x="1300" y="382" text-anchor="middle" class="h2">Amazon EKS cluster</text>
+
+  <rect x="875" y="428" width="820" height="220" rx="18" fill="url(#blue)" stroke="#7FB8EA" stroke-width="2"/>
+  <text x="910" y="467" class="h2">Windows worker node group</text>
+  <text x="910" y="495" class="small">Windows Server 2025 compatible nodes</text>
+  <rect x="910" y="516" width="750" height="105" rx="16" fill="#fff" stroke="#2A83CF" stroke-width="2"/>
+  <text x="945" y="557" class="h3">Pod: windows-devtools-v6</text>
+  <text x="945" y="587" class="body">Windows container • PowerShell workspace • Preinstalled tools</text>
+  <rect x="1490" y="535" width="140" height="48" rx="22" fill="#16834A"/>
+  <circle cx="1513" cy="559" r="7" fill="#fff"/>
+  <text x="1570" y="566" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">Running</text>
+
+  <rect x="875" y="667" width="820" height="96" rx="18" fill="#F1F8F2" stroke="#A8D9B3" stroke-width="2"/>
+  <text x="910" y="706" class="h3">Linux worker node group</text>
+  <text x="910" y="736" class="body">Separate Linux workloads; the Windows developer pod is selected onto Windows nodes.</text>
+
+  <!-- Lower interactive and verification panels -->
+  <rect x="40" y="835" width="550" height="238" rx="20" fill="#fff" stroke="#8CB3D9" stroke-width="2"/>
+  <text x="70" y="878" class="h2">Interactive container access</text>
+  <rect x="65" y="905" width="500" height="62" rx="12" fill="#EAF3FF"/>
+  <text x="85" y="943" font-family="Consolas,monospace" font-size="16" fill="#173B5B">kubectl exec -it -n windows &lt;pod&gt;</text>
+  <text x="70" y="1005" class="body">Opens a PowerShell session inside the pod.</text>
+  <text x="70" y="1035" class="small">No interactive login to the worker EC2 instance is needed.</text>
+
+  <rect x="620" y="835" width="1140" height="238" rx="20" fill="#102538" stroke="#6C91B5" stroke-width="2"/>
+  <text x="655" y="878" font-size="23" font-weight="700" fill="#fff">Package verification inside the container</text>
+  <g class="mono">
+    <text x="660" y="920">PS C:\workspace&gt; git --version</text><text x="1090" y="920" fill="#A8E6C0">Git 2.56.0</text>
+    <text x="660" y="953">PS C:\workspace&gt; node --version / npm --version</text><text x="1090" y="953" fill="#A8E6C0">Node 24.22.3 / npm 11.19.1</text>
+    <text x="660" y="986">PS C:\workspace&gt; python --version / pip --version</text><text x="1090" y="986" fill="#A8E6C0">Python 3.14.9 / pip 26.2.2</text>
+    <text x="660" y="1019">PS C:\workspace&gt; java -version</text><text x="1090" y="1019" fill="#A8E6C0">OpenJDK 17.0.21</text>
+    <text x="660" y="1052">PS C:\workspace&gt; aws --version / kubectl version --client / terraform version</text>
+  </g>
+  <text x="1660" y="1052" text-anchor="end" font-size="13" fill="#A8E6C0">AWS CLI 2.41.0 • kubectl 1.37.2 • Terraform 1.17.2</text>
+</svg>

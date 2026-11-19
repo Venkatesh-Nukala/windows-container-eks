@@ -8,6 +8,9 @@ The workspace provides an interactive PowerShell environment with a consistent s
 
 ## Architecture and end-to-end flow
 
+![Windows Developer Tools on AWS EKS architecture](docs/architecture.svg)
+
+
 1. Maintain the Dockerfile and PowerShell installation scripts in this repository.
 2. Build the custom Windows image on a compatible Windows container build host.
 3. Tag the image and push it to Amazon ECR.
@@ -16,18 +19,12 @@ The workspace provides an interactive PowerShell environment with a consistent s
 6. A developer opens an interactive PowerShell session with `kubectl exec -it`.
 7. Verify the installed tools inside the container.
 
-```mermaid
-flowchart LR
-  A["Dockerfile + PowerShell scripts"] --> B["Windows build host"]
-  B --> C["Build custom Windows image"]
-  C --> D["Amazon ECR"]
-  D --> E["Amazon EKS Deployment"]
-  E --> F["Windows worker node"]
-  F --> G["Windows developer pod"]
-  H["Developer"] --> I["kubectl exec -it"]
-  I --> G
-  G --> J["Verify development and DevOps tools"]
-```
+
+### Docker build context
+
+The image build uses one Dockerfile and two PowerShell scripts:
+
+![Windows developer image build context](docs/build-context.svg)
 
 See the [implementation guide](docs/implementation-guide.md) and [Kubernetes deployment template](kubernetes/windows-devtools-deployment.yaml).
 
@@ -58,6 +55,8 @@ Versions above reflect the v6 project validation notes. Re-run the verification 
 │   ├── namespace.yaml
 │   └── windows-devtools-deployment.yaml
 ├── docs/
+│   ├── architecture.svg
+│   ├── build-context.svg
 │   └── implementation-guide.md
 └── README.md
 ```
@@ -138,7 +137,7 @@ The v6 image was built and pushed to ECR, deployed to an EKS Windows worker, acc
 
 ## Roadmap
 
-- [ ] Add architecture and implementation screenshots under `docs/`.
+- [ ] Add real implementation screenshots under `docs/screenshots/` (image build, ECR push, running pod, interactive shell, and package verification).
 - [ ] Add an automated image verification script.
 - [ ] Add checksum validation for downloaded installers and CLI binaries.
 - [ ] Add image vulnerability scanning to the image publishing workflow.

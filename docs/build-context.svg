@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+  <title id="title">Windows developer image build context</title>
+  <desc id="desc">The C windows-devtools folder contains a Dockerfile and two PowerShell installation scripts.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" x2="1"><stop offset="0" stop-color="#0756A5"/><stop offset="1" stop-color="#0B3970"/></linearGradient>
+    <style>
+      .title{font:700 34px 'Segoe UI',Arial,sans-serif;fill:#173B5B}
+      .path{font:700 30px 'Segoe UI',Arial,sans-serif;fill:#fff}
+      .file{font:600 27px 'Segoe UI',Arial,sans-serif;fill:#19354F}
+      .note{font:17px 'Segoe UI',Arial,sans-serif;fill:#5B7085}
+    </style>
+  </defs>
+  <rect width="1200" height="690" fill="#F7FAFE"/>
+  <rect x="18" y="18" width="1164" height="654" rx="26" fill="#fff" stroke="#B7CDE2" stroke-width="3"/>
+  <text x="600" y="75" text-anchor="middle" class="title">Windows image build context</text>
+  <rect x="170" y="115" width="860" height="105" rx="22" fill="url(#blue)"/>
+  <path d="M215 154 h38 l15 14 h55 v35 h-108 z" fill="#FFC83D" stroke="#E7A91A" stroke-width="3"/>
+  <path d="M215 154 v-9 h34 l10 10" fill="#FFD76A"/>
+  <text x="365" y="181" class="path">C:\windows-devtools\</text>
+  <path d="M600 220 V285 M600 285 H270 V335 M600 285 V335 M600 285 H930 V335" fill="none" stroke="#245B91" stroke-width="5" stroke-linecap="round"/>
+  <g>
+    <rect x="75" y="335" width="390" height="170" rx="20" fill="#EEF6FF" stroke="#8DB9E1" stroke-width="3"/>
+    <rect x="110" y="370" width="72" height="90" rx="8" fill="#fff" stroke="#5D91C1" stroke-width="4"/>
+    <path d="M158 370 V394 H182" fill="none" stroke="#5D91C1" stroke-width="4"/>
+    <path d="M122 432 C139 413 162 420 171 438 C158 459 132 462 122 432Z" fill="#1685D5"/>
+    <text x="205" y="430" class="file">Dockerfile</text>
+    <text x="270" y="475" text-anchor="middle" class="note">Base image and build instructions</text>
+
+    <rect x="505" y="335" width="390" height="170" rx="20" fill="#F2EEFF" stroke="#B69BE8" stroke-width="3"/>
+    <rect x="540" y="370" width="82" height="82" rx="14" fill="#267BC4"/>
+    <path d="M565 392 L589 411 L565 431 M594 431 H608" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="645" y="430" class="file">install-tools.ps1</text>
+    <text x="700" y="475" text-anchor="middle" class="note">Git, Java, AWS CLI, Node.js, Python</text>
+
+    <rect x="935" y="335" width="220" height="170" rx="20" fill="#F2EEFF" stroke="#B69BE8" stroke-width="3"/>
+    <rect x="956" y="370" width="66" height="66" rx="12" fill="#267BC4"/>
+    <path d="M976 386 L995 402 L976 420 M1000 420 H1010" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1048" y="464" text-anchor="middle" font-size="19" font-weight="700" fill="#19354F">install-cli-</text>
+    <text x="1048" y="490" text-anchor="middle" font-size="19" font-weight="700" fill="#19354F">tools.ps1</text>
+  </g>
+  <rect x="170" y="555" width="860" height="70" rx="16" fill="#E8F5EC" stroke="#9BCDA9" stroke-width="2"/>
+  <text x="600" y="598" text-anchor="middle" font-size="21" font-weight="700" fill="#23613A">Docker copies these files into the image and runs the installation scripts during build</text>
+</svg>
