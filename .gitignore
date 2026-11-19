@@ -1,0 +1,28 @@
+# Windows and editor files
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+*.pem
+*.key
+kubeconfig
+credentials
+
+# Terraform state and local data
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Build output
+dist/
+build/

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: windows-devtools-v6
+  namespace: windows
+  labels:
+    app: windows-devtools-v6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: windows-devtools-v6
+  template:
+    metadata:
+      labels:
+        app: windows-devtools-v6
+    spec:
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+        - name: windows-devtools
+          # Replace with the full ECR image URI before applying.
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/windows/demo:devtools-v6
+          imagePullPolicy: Always
