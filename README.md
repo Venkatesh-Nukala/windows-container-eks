@@ -97,6 +97,7 @@ The ECR repository must exist before pushing unless repository creation is autom
 Update the image field in `kubernetes/windows-devtools-deployment.yaml` with the full ECR image URI, then run:
 
 ```powershell
+kubectl apply -f kubernetes/namespace.yaml
 kubectl apply -f kubernetes/windows-devtools-deployment.yaml
 kubectl get pods -n windows -o wide
 ```
