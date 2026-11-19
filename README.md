@@ -28,6 +28,12 @@ The image build uses one Dockerfile and two PowerShell scripts:
 
 See the [implementation guide](docs/implementation-guide.md) and [Kubernetes deployment template](kubernetes/windows-devtools-deployment.yaml).
 
+## Engineering reference
+
+- [Troubleshooting notes](docs/troubleshooting.md) — scheduling, disk pressure, image pulls, interactive access, and port-forwarding.
+- [Design decisions](docs/design-decisions.md) — rationale and trade-offs behind the Windows base image, build host, ECR, scripts, node selection, and interactive access.
+- [Version matrix](docs/version-matrix.md) — v6 tool versions, pinning notes, and validation commands.
+
 ## Tools included in the v6 build
 
 | Tool | Version |
