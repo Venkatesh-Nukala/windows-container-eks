@@ -8,6 +8,9 @@ The workspace provides an interactive PowerShell environment with a consistent s
 
 ## Architecture and end-to-end flow
 
+![Windows Developer Tools on AWS EKS architecture](docs/architecture.svg)
+
+
 1. Maintain the Dockerfile and PowerShell installation scripts in this repository.
 2. Build the custom Windows image on a compatible Windows container build host.
 3. Tag the image and push it to Amazon ECR.
@@ -28,6 +31,12 @@ flowchart LR
   I --> G
   G --> J["Verify development and DevOps tools"]
 ```
+
+### Docker build context
+
+The image build uses one Dockerfile and two PowerShell scripts:
+
+![Windows developer image build context](docs/build-context.svg)
 
 See the [implementation guide](docs/implementation-guide.md) and [Kubernetes deployment template](kubernetes/windows-devtools-deployment.yaml).
 
@@ -58,6 +67,8 @@ Versions above reflect the v6 project validation notes. Re-run the verification 
 │   ├── namespace.yaml
 │   └── windows-devtools-deployment.yaml
 ├── docs/
+│   ├── architecture.svg
+│   ├── build-context.svg
 │   └── implementation-guide.md
 └── README.md
 ```
